@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.cuadrado {
+				background-image: url(img/caballo.webp);
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				width: 200px;
+				height: 200px;
+				cursor: pointer;
+				margin-bottom: 10px;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				font-weight: bold;
+				font-family: Arial, Helvetica, sans-serif;
+
+				transition: 500ms;
+
+        background-color: aqua;
+			}
+/*
+			.cuadrado.move {
+				margin-left: 10%;
+				transition: 500ms;
+			}
+*/
+			#wrapper {
+        display: none;
+				box-shadow: 5px 10px 31px -5px rgba(0, 0, 0, 0.75);
+				-webkit-box-shadow: 5px 10px 31px -5px rgba(0, 0, 0, 0.75);
+				-moz-box-shadow: 5px 10px 31px -5px rgba(0, 0, 0, 0.75);
+        position: absolute;
+        top: 0%;
+        margin-right: auto;
+        margin-left: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="cuadrado" data-posicion="0">RAMON</div>
+		<div class="cuadrado" data-posicion="0">ROMAN</div>
+
+		<div id="wrapper">GANO {caballo}</div>
+
+		<script>
+      /*
+			document.querySelectorAll(".cuadrado").forEach(function (cuadrado) {
+				cuadrado.addEventListener("click", function () {
+					cuadrado.classList.toggle("move");
+          const margen = Number(cuadrado.dataset.margen);
+          cuadrado.style = "margin-left: "+margen+"%; transition: 500ms;";
+          const step = Math.random() * 10;
+          cuadrado.dataset.margen = margen + step;
+				});
+			});
+      */
+
+      // Carrera de caballos
+      /*
+      let winner = false;
+      let posiciones = [];
+      setInterval(function(){
+        if(!winner) {
+          document.querySelectorAll(".cuadrado").forEach(function (cuadrado) {
+            const margen = Number(cuadrado.dataset.margen);
+            cuadrado.style = "margin-left: "+margen+"%; transition: 500ms;";
+            const step = Math.random() * 10;
+            cuadrado.dataset.margen = margen + step;
+
+            console.log(cuadrado.innerHTML, 'LEFT: ', cuadrado.style.left);
+            posiciones.push({
+              caballo: cuadrado.innerHTML,
+              posicion: margen
+            });
+          });
+          posiciones.forEach(function(item){
+            console.log(item);
+            if(item.posicion >= 100) {
+              winner = true;
+              console.warn('Ganador: '+item.caballo);
+            }
+          })
+        } else {
+          document.querySelectorAll(".cuadrado").forEach(function (cuadrado) {
+            cuadrado.dataset.margen = 10;
+            cuadrado.style = "margin-left: 0%; transition: 500ms;";
+          });
+          posiciones = [];
+          winner = false;
+        }
+      }, 500);
+      */
+
+      let ganador = false;
+      let posiciones = [];
+      do {
+        const caballos = document.querySelectorAll(".cuadrado");
+
+        // Obtener la posición actual de los dos caballos
+        caballos.forEach(function(caballo){
+          let 
+            posicion = Number(caballo.dataset.posicion),
+            nombre = caballo.innerHTML;
+
+          if(posicion >= 100) {
+            ganador = true;
+          } else {
+            posiciones.push({
+              nombre: nombre,
+              posicion: posicion
+            })
+        }
+
+          caballo.dataset.posicion = posicion + Math.random() * 10;
+        });
+      } while( ganador === false);
+
+      // Calcular el ganador
+      posiciones = posiciones.sort(function(a, b) {
+        if(a < b)
+          return a
+        else
+          return b
+      })
+
+      console.table(posiciones);
+		</script>
+	</body>
+</html>
