@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<input type="text" id="txtUsuario" placeholder="Usuario" />
+		<input type="password" id="txtClave" placeholder="Contraseña" />
+		<input type="text" id="CAMPONUEVO" />
+		<button>Enviar formulario</button>
+
+		<script>
+			/*
+     * Evento: ¿QUE SUCEDE?
+        Alternativas:
+          1. La llamo desde la consola directamente
+          2. Al hacer click en un boton
+     * CallBack: ¿COMO RESPONDO A LO QUE SUCEDE?
+     *  Validar si el campo de texto tiene algún valor o no (que sea REQUERIDO)
+     */
+
+			// 2*1 + 2*5 = 2(1 + 5)
+
+			[
+				document.querySelector("#txtUsuario"),
+				document.querySelector("#txtClave"),
+				document.querySelector("#CAMPONUEVO"),
+			].forEach(function(campo) {
+				campo.addEventListener("blur", function() {
+					if (campo.value == "") {
+						console.log("El campo está vacío");
+					} else {
+						console.log("El campo tiene datos");
+					}
+				});
+			});
+
+
+		</script>
+	</body>
+</html>

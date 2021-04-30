@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    /**
+     * API EventTarget (Medio / Avanzado)
+     * Caso de uso:
+     *    > Manejo DESGLOSADO (desacoplado) de Eventos
+     *    > Crear nuevos eventos
+     *    > Implementación de Observer / Pub-Sub para desacoplar el código
+     * Aporta al ámbito global:
+     * (F) Funciones:
+     * (E) Eventos:
+     * (O) Objetos: EventTarget, Event
+     *      EventTarget: representa un LUGAR donde ocurren eventos
+     *      Event: representa un evento
+    **/ 
+
+    // loose coupling
+
+    const sebasEvento = new Event('sebasEvento');
+    
+    const lugarDondeOcurreSebasEvento = new EventTarget();
+
+    lugarDondeOcurreSebasEvento.addEventListener('sebasEvento', function(){
+      console.log('Ejecutaste el SebasEvento');
+    });
+
+    lugarDondeOcurreSebasEvento.addEventListener('sebasEvento', function(){
+      console.log('Ejecutaste el SebasEvento otra vez');
+    });
+
+    lugarDondeOcurreSebasEvento.dispatchEvent(sebasEvento)
+
+    console.log(lugarDondeOcurreSebasEvento);
+
+  </script>
+
+</body>
+</html>

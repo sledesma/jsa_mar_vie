@@ -59,7 +59,7 @@
     }
     
     function Li_click(event) {
-      console.log('click en ', event.target);
+      console.log('Borrado: ', event.target);
       // 1. Modificar datos.camposActuales
       datos.camposActuales = datos.camposActuales.filter(
           function(valor){
@@ -67,7 +67,15 @@
         }
       );
 
-      console.log('Nuevos campos: ', datos.camposActuales)
+      document.querySelector('#listaDestino').innerHTML = '';
+      datos.camposActuales.forEach(function(valor){
+        const li = document.createElement('li');
+        li.innerText = valor.valor;
+        li.dataset.id = valor.id;
+        li.onclick = Li_click;
+
+        document.querySelector('#listaDestino').appendChild(li);
+      });
     }
   </script>
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			.valido input {
+				background-color: rgba(0, 255, 0, 0.5);
+			}
+
+			.invalido input {
+				background-color: rgba(255, 0, 0, 0.5);
+			}
+
+			.requerido::after {
+				content: " *";
+			}
+
+			.valido::after {
+				content: "";
+			}
+
+			.invalido::after {
+				content: "Campo requerido";
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="requerido">
+			<input type="text" id="txtUsuario" placeholder="Usuario" />
+		</div>
+		<div class="requerido">
+			<input type="password" id="txtClave" placeholder="Contraseña" />
+		</div>
+		<div class="requerido">
+			<input type="text" id="CAMPONUEVO" />
+		</div>
+		<div class="requerido">
+			<input type="text" id="CAMPONUEVO2" />
+		</div>
+		<button>Enviar formulario</button>
+
+		<script>
+			document
+        .querySelectorAll(".requerido input")
+        .forEach(function (campo) {
+          campo.addEventListener("blur", function () {
+            if (campo.value == "") {
+              campo.parentElement.className = "requerido invalido";
+            } else {
+              campo.parentElement.className = "requerido valido";
+            }
+          });
+        });
+		</script>
+	</body>
+</html>

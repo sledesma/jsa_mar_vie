@@ -1,0 +1,20 @@
+.valido input {
+	background-color: rgba(0, 255, 0, 0.5);
+}
+
+.invalido input {
+	background-color: rgba(255, 0, 0, 0.5);
+}
+
+.requerido::after {
+	content: " *";
+}
+
+.valido::after {
+	content: "";
+}
+
+.invalido::after {
+	content: "Campo requerido";
+	color: red;
+}
