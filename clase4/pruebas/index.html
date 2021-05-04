@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX - 1</title>
+</head>
+<body>
+  
+
+  <script>
+
+    /**
+      * API XMLHttpRequest
+      * (aporta al ámbito globlal)
+      * F (funciones): XMLHttpRequest (constructor)
+      * E (eventos): - 
+      * O (objetos): -
+    **/
+
+    // Crear la petición
+    const nuevaPeticion = new XMLHttpRequest()
+    // Configurar la petición
+    nuevaPeticion.open('GET', 'https://swapi.dev/api/people/1/');
+    nuevaPeticion.responseType = "json"
+    // Enviar al servidor
+    nuevaPeticion.send();
+    // Cuando tenga la respuesta...
+    nuevaPeticion.addEventListener('load', function() {
+      console.log('Cargado!');
+      console.log(JSON.stringify(nuevaPeticion.response));
+    });
+
+    /*
+    QUE: Luke
+    PARA QUE:
+      - Mostrarlo en una página (GET)
+      - Mostrarlo en una página e imprimirlo (GET)
+      - Mostrarlo en una tabla (GET)
+      - Sacar el IMC -altura y peso- (GET)
+
+      LEERLO
+        - GET
+        - HEAD
+        - OPTIONS
+      ESCRIBIRLO
+        - POST
+        - DELETE
+        - PUT
+        - PATCH
+    */
+  </script>
+</body>
+</html>

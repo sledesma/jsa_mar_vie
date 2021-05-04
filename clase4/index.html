@@ -2,53 +2,117 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AJAX - 1</title>
+  <title>Document</title>
+
+  <style>
+    #lista {
+
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid black;
+    }
+
+    .item-descripcion {
+      width: 30%;
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    .item-nombre {
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .item-horoscopo {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .item-horoscopo .area {
+      border: 1px solid black;
+    }
+  </style>
+
 </head>
 <body>
+
+  <div id="lista"></div>
   
-
+  <script src="api.js"></script>
   <script>
+    const
+      API_ENDPOINT = "https://api.adderou.cl/tyaas/";
 
-    /**
-      * API XMLHttpRequest
-      * (aporta al ámbito globlal)
-      * F (funciones): XMLHttpRequest (constructor)
-      * E (eventos): - 
-      * O (objetos): -
-    **/
+    ajax({
+      url:API_ENDPOINT,
+      onLoad: initApp,
+      method: 'GET',
+      responseType: 'json'
+    })
 
-    // Crear la petición
-    const nuevaPeticion = new XMLHttpRequest()
-    // Configurar la petición
-    nuevaPeticion.open('GET', 'https://swapi.dev/api/people/1/');
-    nuevaPeticion.responseType = "json"
-    // Enviar al servidor
-    nuevaPeticion.send();
-    // Cuando tenga la respuesta...
-    nuevaPeticion.addEventListener('load', function() {
-      console.log('Cargado!');
-      console.log(JSON.stringify(nuevaPeticion.response));
-    });
+    function initApp(datos) {
 
-    /*
-    QUE: Luke
-    PARA QUE:
-      - Mostrarlo en una página (GET)
-      - Mostrarlo en una página e imprimirlo (GET)
-      - Mostrarlo en una tabla (GET)
-      - Sacar el IMC -altura y peso- (GET)
+      document.querySelector('#lista').appendChild(
+        mapItemToDom(datos.horoscopo.aries)
+      )
 
-      LEERLO
-        - GET
-        - HEAD
-        - OPTIONS
-      ESCRIBIRLO
-        - POST
-        - DELETE
-        - PUT
-        - PATCH
-    */
+    }
+
+    function mapItemToDom(item) {
+      const divItem = document.createElement('div');
+      divItem.className = "item";
+
+      const itemDescripcion = document.createElement('div');
+      itemDescripcion.className = "item-descripcion";
+
+      const itemNombre = document.createElement('div');
+      itemNombre.className = "item-nombre";
+      itemNombre.innerText = item.nombre;
+      itemDescripcion.appendChild(itemNombre);
+
+      const itemFecha = document.createElement('div');
+      itemFecha.className = "item-fecha";
+      itemFecha.innerText = item.fechaSigno;
+      itemDescripcion.appendChild(itemFecha);
+
+      divItem.appendChild(itemDescripcion);
+
+
+      const itemHoroscopo = document.createElement('div');
+      itemHoroscopo.className = "item-horoscopo";
+
+      const areaA = document.createElement('div');
+      areaA.className = "area";
+      areaA.innerText = item.amor;
+      itemHoroscopo.appendChild(areaA);
+
+      const areaS = document.createElement('div');
+      areaS.className = "area";
+      areaS.innerText = item.salud;
+      itemHoroscopo.appendChild(areaS);
+
+      const areaD = document.createElement('div');
+      areaD.className = "area";
+      areaD.innerText = item.dinero;
+      itemHoroscopo.appendChild(areaD);
+
+      divItem.appendChild(itemHoroscopo);
+
+      return divItem;
+    }
   </script>
 </body>
 </html>
