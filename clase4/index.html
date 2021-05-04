@@ -17,6 +17,8 @@
       padding: 20px;
       box-sizing: border-box;
       border: 1px solid black;
+      height: auto;
+      margin-bottom: 20px;
     }
 
     .item-descripcion {
@@ -43,12 +45,16 @@
 
     .item-horoscopo .area {
       border: 1px solid black;
+      margin-bottom: 10px;
     }
   </style>
 
 </head>
 <body>
 
+  <nav>
+    <input type="search" id="txtBusqueda">
+  </nav>
   <div id="lista"></div>
   
   <script src="api.js"></script>
@@ -56,19 +62,49 @@
     const
       API_ENDPOINT = "https://api.adderou.cl/tyaas/";
 
-    ajax({
-      url:API_ENDPOINT,
-      onLoad: initApp,
-      method: 'GET',
-      responseType: 'json'
-    })
+
+    document.addEventListener('DOMContentLoaded', function(){
+      ajax({
+            url:API_ENDPOINT,
+            onLoad: initApp,
+            method: 'GET',
+            responseType: 'json'
+          })
+    });
 
     function initApp(datos) {
+      const el = document.querySelector('#lista');
+      const busqueda = document.querySelector('#txtBusqueda');
 
-      document.querySelector('#lista').appendChild(
-        mapItemToDom(datos.horoscopo.aries)
-      )
+      busqueda.addEventListener('input', function(){
+        el.innerHTML = '';
 
+        const frag = document.createDocumentFragment();
+
+        for (const signo in datos.horoscopo) {
+          const signoActual = datos.horoscopo[signo]
+          if(signoActual.nombre.toLowerCase().includes(busqueda.value.toLowerCase()) ||
+          signo.toLowerCase().includes(busqueda.value.toLowerCase())) {
+            frag.appendChild(
+              mapItemToDom(signoActual)
+            )
+          }
+        }
+
+        el.appendChild(frag);
+      });
+
+      el.innerHTML = '';
+
+      const frag = document.createDocumentFragment();
+      
+      for (const signo in datos.horoscopo) {
+        frag.appendChild(
+          mapItemToDom(datos.horoscopo[signo])
+        )
+      }
+
+      el.appendChild(frag);
     }
 
     function mapItemToDom(item) {
@@ -96,17 +132,17 @@
 
       const areaA = document.createElement('div');
       areaA.className = "area";
-      areaA.innerText = item.amor;
+      areaA.innerHTML = "AMOR <br>"+item.amor;
       itemHoroscopo.appendChild(areaA);
 
       const areaS = document.createElement('div');
       areaS.className = "area";
-      areaS.innerText = item.salud;
+      areaS.innerHTML = "SALUD <br>"+item.salud;
       itemHoroscopo.appendChild(areaS);
 
       const areaD = document.createElement('div');
       areaD.className = "area";
-      areaD.innerText = item.dinero;
+      areaD.innerHTML = "DINERO <br>"+item.dinero;
       itemHoroscopo.appendChild(areaD);
 
       divItem.appendChild(itemHoroscopo);
