@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horoscopo</title>
+</head>
+<body>
+  <script>
+    /**
+     * NO SE REPITE:
+     * 1) URL
+     * 2) Como lo recibo (lo que pasa en el 'load')
+     * 3) Tipo
+    **/ 
+    function ajax(opciones) {
+
+      const
+        url = opciones.url, 
+        load_callback = opciones.onLoad, 
+        metodo = opciones.method, 
+        tipo = opciones.responseType;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open(metodo, url);
+      xhr.responseType = tipo;
+      xhr.send();
+      xhr.onload = function(){
+        load_callback(xhr.response, xhr);
+      };
+
+    }
+    
+    ajax({
+      url: 'https://api.adderou.cl/tyaas/',
+      onLoad: function(respuesta){
+        console.log(respuesta)
+      },
+      method: "GET",
+      responseType: "json"
+    })
+  </script>
+</body>
+</html>
