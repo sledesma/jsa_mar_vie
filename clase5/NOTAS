@@ -1,0 +1,26 @@
+¿CUAN CAMBIANTE ES EL CONTENIDO? ¿CAMBIA EL CONTENIDO RESPECTO DEL USUARIO?
+Cantidad: ¿Cada cuanto hay un cambio de contenido?
+Calidad: ¿El contenido que cambia es mucho o poco?
+
+
+1. Analizar el cambio de información
+  - Cuanto cambia
+  - Que cambia
+  - Quien lo cambia
+  - Con que frecuencia cambia
+
+2. De los cambios ¿cuáles contemplamos en nuestro proyecto? ¿cuales terciarizamos?
+
+3. Definir la estrategia para gestionar ese contenido cambiante / no cambiante
+
+  Si el contenido NO cambia en absoluto, o el cambio se realiza manualmente:
+    SE UTILIZA UN RENDERIZADO ESTÁTICO
+      => Escribir a mano / JAMStack
+
+  Si el contenido tiene mayor porción estática, pero con algunas partes cambiantes:
+    SE UTILIZA UN RENDERIZADO DEL LADO DEL CLIENTE
+      => AJAX / Promesas y Fetch / SPA (Single Page Application) (NAVEGACION ENTRE PAGINAS)
+
+  Si el contenido es muy dinámico, o debe cambiar en función de la petición recibida:
+    SE UTILIZA UN RENDERIZADO DEL LADO DEL SERVIDOR
+      => PHP / Node / Python / Net / Java / Back-End
