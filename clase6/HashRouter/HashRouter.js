@@ -47,13 +47,37 @@ function __HashRouter_Render(hash) {
 
 	if (!encontrado) return false;
 
-	document
+	if(encontrado.renderUrl) {
+		const xhr = new XMLHttpRequest();
+		xhr.open('GET', encontrado.renderUrl);
+		xhr.responseType = "document";
+		xhr.send();
+		xhr.onload = function() {
+			const body = xhr.response.body
+			const css = body.querySelector('style');
+			const js = body.querySelector('script');
+			const html = body.querySelector('template').content;			
+
+			document
+			.querySelectorAll(__HashRouter_options.view_selector)
+			.forEach(function (view) {
+				view.innerHTML = '';
+				view.appendChild(html);
+			});
+
+			document.body.appendChild(js);
+			
+		}
+	} else {
+		document
 		.querySelectorAll(__HashRouter_options.view_selector)
 		.forEach(function (view) {
-      view.innerHTML = encontrado.render;
-    });
-}
+			view.innerHTML = encontrado.render;
+		});
+	}
 
+
+}
 
 function __SimpsonLib_Guardia() {
   if(Number(localStorage.getItem('cantidad')) > 6 ) {
@@ -65,3 +89,4 @@ function __SimpsonLib_Guardia() {
     localStorage.setItem('cantidad', nuevo);
   }
 }
+
