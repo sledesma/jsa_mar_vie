@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <a href="/australia" class="hash-link">Ir a Australia</a>
+  <a href="/eeuu" class="hash-link">Ir a Estados Unidos</a>
+
+  <div class="hash-view"></div>
+
+  <script src="HashRouter.js"></script>
+  <script>
+    HashRouter([
+      { path: '/australia', render: 'Estas en Australia' },
+      { path: '/eeuu', render: 'Estas en Estados Unidos' }
+    ])
+
+  </script>
+</body>
+</html>

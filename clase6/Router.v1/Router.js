@@ -58,4 +58,5 @@ function Router(rutas) {
  *  - Mediante la API History
  *  - Mediante el Hash (#)
  * 5. ¿Cómo minimizar los cambios al DOM?
+ * 6. ¿Como resuelvo el problema del fallback?
  */
