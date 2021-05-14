@@ -1,0 +1,8 @@
+Promesa:
+  - Produce ACTIVAMENTE - UN SOLO VALOR
+Funcion:
+  - Produce PASIVAMENTE - UN SOLO VALOR
+Iterador:
+  - Produce PASIVAMENTE - VARIOS VALORES
+Observable (Patrón Observer) - Rx...
+  - Produce ACTIVAMENTE - VARIOS VALORES
