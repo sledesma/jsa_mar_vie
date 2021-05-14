@@ -1,0 +1,30 @@
+¿Que es una promesa?
+  Es una operación asincrónica que puede ser resuelta o rechazada, con la posibilidad de ejecutar acciones según el estado en el que se encuentre al momento de evaluarla
+
+  Las promesas en la vida real
+    - Tratan sobre cosas futuras, que no se pueden resovler inmediatamente
+    - Llega un punto en donde se evalua el estado de la promesa (si se cumplió o no)
+    - Hay consecuencias dependiendo de dicha evaluación
+    
+  Una promesa en código
+    - Trata sobre operaciones asincrónicas
+    - La promesa tiene dos estados: resuelto / rechazado
+    - Se pueden ejecutar callbacks según cada estado  
+
+¿Para qué sirven?
+  - Dan la posibilidad de crear mis propias operaciones asincrónicas
+  - Vuelve las operaciones asincrónicas mucho mas simples al reducir sus estados posibles
+  - Muchas interfaces de JavaScript se basan en promesas:
+      - API Fetch (reemplazo para el XMLHttpRequest)
+      - API Caches (PWA)
+      - API ServiceWOrker (PWA)
+      
+¿Cómo se usan?
+  Las promesas se utilizan en dos etapas
+  1. Crear la promesa (por única vez al principio)
+    - Definiendo CUANDO se resuelve o CUANDO se rechaza
+    - Defino las CASUSAS del estado resuelto o el estado rechazado
+  -------------------------------------------------------------------------
+  2. Utilizar la promesa (se puede hacer varias veces)
+    - Definiendo QUE SUCEDE cuando se resuelve o QUE SUCEDE cuando se rechaza
+    - Defino las CONSECUENCIAS del estado resuelto o el estado rechazado
