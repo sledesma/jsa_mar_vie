@@ -8,15 +8,14 @@
 </head>
 <body>
   
-  <form action="" method="" id="frmCombustible">
-
     <!-- Ingresar el tipo de combustible -->
     <label for="tipoCombustible">Seleccione el tipo de combustible</label>
     <select id="tipoCombustible">
+      <option value="">Selecciona un combustible</option>
       <option value="GAS">Gas natural</option>
       <option value="ACE">Acetileno</option>
       <option value="PRO">Propano Gasolina Butano</option>
-      <option value="DIE">Diésel</option>
+      <option value="DIÉ">Diésel</option>
       <option value="FUE">Fueloil</option>
       <option value="MAN">Manaos</option>
     </select>
@@ -25,12 +24,16 @@
     <label for="cantidad">Ingrese la cantidad (en kg)</label>
     <input type="number" id="cantidad">
     <br>
-    <button>Obtener potencia y calor generado</button>
+    <button disabled id="btnProcesar">Obtener potencia y calor generado</button>
 
     <!-- Potencia MJ / kg -->
+    <div id="potencia"></div>
     <!-- Calor generado kcal / kg -->
-
-  </form>
+    <div id="calor"></div>
+    <!--Rendimiento-->
+    <div id="rendimiento"></div>
+    <!-- Recomendado -->
+    <div id="recomendado"></div>
 
   <script src="combustible.js"></script>
 

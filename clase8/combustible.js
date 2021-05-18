@@ -61,7 +61,98 @@ function crearTablaRendimientos(combustibles, kg) {
 		});
 }
 
+function getCombustibleBySigla(combustibles, sigla) {
+	return combustibles.find(function (val) {
+		return val.sigla == sigla;
+	});
+}
+
 loadCombustibles().then(function (combustibles) {
-	console.log(crearTablaRendimientos(combustibles, 45));
-	console.log(combustibles);
+	const boton = document.querySelector("#btnProcesar"),
+		divPotencia = document.querySelector("#potencia"),
+		divCalor = document.querySelector("#calor"),
+		tipoCombustible = document.querySelector("#tipoCombustible"),
+		cantidadKg = document.querySelector("#cantidad"),
+		divRecomendado = document.querySelector("#recomendado"),
+    divRendimiento = document.querySelector('#rendimiento');
+
+	boton.disabled = false;
+
+  tipoCombustible.addEventListener('change', function () {
+		const kg = Number(cantidadKg.value);
+		const tablaRendimientos = crearTablaRendimientos(combustibles, kg);
+		const comb = getCombustibleBySigla(combustibles, tipoCombustible.value);
+
+		divPotencia.innerHTML = "Potencia: " + comb.obtenerPotencia(kg);
+		divCalor.innerHTML = "Calor: " + comb.obtenerCalorGenerado(kg);
+
+		let recomendado = {};
+		for (let i = 0; i < tablaRendimientos.length; i++) {
+			const rendActual = tablaRendimientos[i];
+			if (rendActual.sigla == comb.sigla) {
+        divRendimiento.innerHTML = 'Rendimiento: '+rendActual.rendimiento
+				if (i < tablaRendimientos.length - 1) {
+					recomendado = tablaRendimientos[i + 1];
+				} else {
+					recomendado = rendActual;
+				}
+			}
+		}
+
+		divRecomendado.innerHTML =
+			"Recomendado: " +
+			getCombustibleBySigla(combustibles, recomendado.sigla).nombre + ' (' + recomendado.sigla + ')'
+	});
+
+  cantidadKg.addEventListener('input', function () {
+		const kg = Number(cantidadKg.value);
+		const tablaRendimientos = crearTablaRendimientos(combustibles, kg);
+		const comb = getCombustibleBySigla(combustibles, tipoCombustible.value);
+
+		divPotencia.innerHTML = "Potencia: " + comb.obtenerPotencia(kg);
+		divCalor.innerHTML = "Calor: " + comb.obtenerCalorGenerado(kg);
+
+		let recomendado = {};
+		for (let i = 0; i < tablaRendimientos.length; i++) {
+			const rendActual = tablaRendimientos[i];
+			if (rendActual.sigla == comb.sigla) {
+        divRendimiento.innerHTML = 'Rendimiento: '+rendActual.rendimiento
+				if (i < tablaRendimientos.length - 1) {
+					recomendado = tablaRendimientos[i + 1];
+				} else {
+					recomendado = rendActual;
+				}
+			}
+		}
+
+		divRecomendado.innerHTML =
+			"Recomendado: " +
+			getCombustibleBySigla(combustibles, recomendado.sigla).nombre + ' (' + recomendado.sigla + ')'
+	});
+
+	boton.addEventListener("click", function () {
+		const kg = Number(cantidadKg.value);
+		const tablaRendimientos = crearTablaRendimientos(combustibles, kg);
+		const comb = getCombustibleBySigla(combustibles, tipoCombustible.value);
+
+		divPotencia.innerHTML = "Potencia: " + comb.obtenerPotencia(kg);
+		divCalor.innerHTML = "Calor: " + comb.obtenerCalorGenerado(kg);
+
+		let recomendado = {};
+		for (let i = 0; i < tablaRendimientos.length; i++) {
+			const rendActual = tablaRendimientos[i];
+			if (rendActual.sigla == comb.sigla) {
+        divRendimiento.innerHTML = 'Rendimiento: '+rendActual.rendimiento
+				if (i < tablaRendimientos.length - 1) {
+					recomendado = tablaRendimientos[i + 1];
+				} else {
+					recomendado = rendActual;
+				}
+			}
+		}
+
+		divRecomendado.innerHTML =
+			"Recomendado: " +
+			getCombustibleBySigla(combustibles, recomendado.sigla).nombre + ' (' + recomendado.sigla + ')'
+	});
 });
