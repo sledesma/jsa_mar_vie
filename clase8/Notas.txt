@@ -1,0 +1,16 @@
+Arquitectura (de JavaScript)
+El modelo más abstracto de un sistema.
+
+Ideas generales respecto de JavaScript:
+  - PROCESAMIENTO NO-LINEAL (Multitherading, Asincrónico)
+  - ARQUITECTURA ORIENTADA A EVENTOS
+  - TIPADO DINAMICO
+  - P.O.O. BASADA EN PROTOTIPOS (Los objetos se crean clonando otros objetos)
+
+
+
+Programacion ORIENTADA A OBJETOS basada en clases
+Producto pr1 = new Producto();
+Producto pr2 = clone pr1 // Patrón PROTOTYPE (en C# / PHP / Java / Python)
+pr2.nombre = "Producto 2";
+
