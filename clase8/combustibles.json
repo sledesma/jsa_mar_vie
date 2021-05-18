@@ -1,0 +1,8 @@
+[
+  { "nombre": "Gas natural", "mj_kg": 53.6, "kcal_kg": 12800 },
+  { "nombre": "Acetileno", "mj_kg": 48.55, "kcal_kg": 11600 },
+  { "nombre": "Propano Gasolina Butano", "mj_kg": 46, "kcal_kg": 11000 },
+  { "nombre": "Diésel", "mj_kg": 42.7, "kcal_kg": 10200 },
+  { "nombre": "Fueloil", "mj_kg": 40.2, "kcal_kg": 9600 },
+  { "nombre": "Manaos", "mj_kg": 47.5, "kcal_kg": 11200 }
+]
