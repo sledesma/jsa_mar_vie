@@ -6,7 +6,7 @@ Ideas generales respecto de JavaScript:
   - ARQUITECTURA ORIENTADA A EVENTOS
   - TIPADO DINAMICO
   - P.O.O. BASADA EN PROTOTIPOS (Los objetos se crean clonando otros objetos)
-
+    - INVIERTE LO MINIMO E INDISPENSABLE EN RESTRICCIONES / CONTROLES
 
 
 Programacion ORIENTADA A OBJETOS basada en clases

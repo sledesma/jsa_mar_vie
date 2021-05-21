@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+    <noscript>Necesitas JavaScript para ejecutar esta aplicación</noscript>
+		<script>
+			/**
+			 * Clases ES6 => Azucar sintáctico
+			 **/
+
+		/*
+    function Lista() {
+      console.log("Creando lista");
+    }
+    const ListaPrototype = {
+      add: function(item) {
+        this.push(item);
+        return this;
+      }
+    }
+    ListaPrototype.__proto__ = Array.prototype;
+    Lista.prototype = ListaPrototype;
+
+    const miLista = new Lista();
+
+    miLista.add('Hola').add('Mundo');
+
+    console.log(miLista);
+    */
+    
+
+			class Lista extends Array {
+				constructor() {
+					super();
+					console.log("Creando lista");
+				}
+
+				add(item) {
+					this.push(item);
+					return this;
+				}
+			}
+
+			const miLista = new Lista();
+
+			miLista.add("Hola").add("Mundo");
+
+			console.log(miLista);
+      
+		</script>
+	</body>
+</html>
