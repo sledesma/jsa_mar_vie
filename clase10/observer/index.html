@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="" method="" id="frmDatos">
+
+    <input type="text" placeholder="Nombre" id="txtNombre">
+    <input type="text" placeholder="Apellido" id="txtApellido">
+
+    <button>Enviar</button>
+
+  </form>
+
+  <script>
+
+    (function(){
+
+      const 
+        frmDatos = document.querySelector('#frmDatos'),
+        txtNombre = document.querySelector('#txtNombre'),
+        txtApellido = document.querySelector('#txtApellido');
+
+        /*
+      const validaciones = {
+        txtNombre: false,
+        txtApellido: false
+      };
+      */
+
+      class Validaciones {
+
+        constructor(initialState) {
+          this.validaciones = initialState;
+        }
+
+        // Publicar
+        publicarValidaciones() {
+          let esValido = true;
+
+          for (const campos in this.validaciones) {
+            const estado = this.validaciones[campos];
+            if(estado == false) {
+              esValido = false;
+              break;
+            }
+          }
+
+          return esValido
+        }
+
+        // Subscribir
+        subscribirValidacion(campo, valor) {
+          this.validaciones[campo] = valor;
+        }
+
+
+      }
+
+      const validaciones = new Validaciones({
+        txtNombre: false,
+        txtApellido: false
+      });
+
+      txtNombre.addEventListener('blur', function(){
+        if(txtNombre.value.length === 0) {
+          validaciones.subscribirValidacion('txtNombre', false)
+        } else {
+          validaciones.subscribirValidacion('txtNombre', true)
+        }
+      });
+
+      txtApellido.addEventListener('blur', function(){
+        if(txtApellido.value.length === 0) {
+          validaciones.subscribirValidacion('txtApellido', false)
+        } else {
+          validaciones.subscribirValidacion('txtApellido', true)
+        }
+      });
+
+      frmDatos.addEventListener('submit', function(e){
+        e.preventDefault();
+        
+        const esValido = validaciones.publicarValidaciones();
+
+        console.log('Estado de validacion: ', esValido);
+
+      })
+
+    })();
+
+  </script>
+
+</body>
+</html>

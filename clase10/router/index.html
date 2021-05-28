@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script src="Router.js"></script>
+  <script>
+
+    class HomePage {
+      index() {
+        console.log('Hola desde home page');
+      }
+    }
+
+    class AboutPage {
+      inicio() {
+        console.log('Hola desde about');
+      }
+    }
+
+    new Router([
+      Route('/home', 'index', HomePage),
+      Route('/contacto', 'inicio', AboutPage)
+    ]);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+Patrones de Diseño Orientado a Objetos
+Patrones de Diseño Funcional
+Patrones de Diseño Arquitectónico
+Patrones de Diseño de Eventos
+Patrones de Diseño Asincrónicos
+----------------------------------------------
+
+Generalización de estructura de clases
+
+1 + 2
+2 + 4
+3 + 8
+
+function f(x) {
+  return 2^x;
+}
+
+
+Estatica: Lo que los componentes son (sin tiempo)
+Dinámica Como se relacionan los distintos componentes (con tiempo)
+Funcional: Lo que los componentes hacen (sin tiempo)
+
+Creacionales: Como creo Objetos
+Estructurales: Como se relacionan los Objetos
+De Comportamiento: Que hacen los Objetos
+
+

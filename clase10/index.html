@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <script>
+
+    // Decorator - Reutilizar aspectos transversales
+    
+    // Una parte donde se ESCRIBEN datos en cada componente (a través de decoradores)
+    // Otra parte donde se LEEN datos de cada componente (a través del runtime)
+
+
+    function Jsonable(object) {
+      object.toJson = function() {
+        return JSON.stringify(this);
+      }
+      return object;
+    }
+
+    class Persona extends EventTarget {
+      constructor(nombre) {
+        super();
+        this.nombre = nombre
+      }
+    }
+
+    let carlos = new Persona('Carlos');
+    carlos = Jsonable(carlos);
+
+    console.log(carlos.toJson());
+
+  </script>
+
+</body>
+</html>
