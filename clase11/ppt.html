@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button id="btnJugar">Jugar al tragamonedas</button>
+  
+  <div class="opcion" id="opcion1"></div>
+  <div class="opcion" id="opcion2"></div>
+  <div class="opcion" id="opcion3"></div>
+
+  <script>
+
+    (function(){
+      // 
+      const 
+
+        Constantes = { ESTADO_GANONORMAL: 1, ESTADO_GANOGRANPREMIO: 2,  ESTADO_SEGUIPARTICIPANDO: -1 },
+        
+        opcionesPosibles = [
+          { nombre: 'Manzana', porc: 40 },
+          { nombre: 'Banana', porc: 70 },
+          { nombre: 'Pera', porc: 90 },
+          { nombre: '7', porc: 100 }
+        ].sort(function(a, b){
+          return a.porc > b.porc ? a : b;
+        }),
+      
+        btnJugar = document.querySelector('#btnJugar'),
+
+        opcion1 = document.querySelector('#opcion1'),
+
+        opcion2 = document.querySelector('#opcion2'),
+
+        opcion3 = document.querySelector('#opcion3');
+
+      /*
+      
+      [ [Manzana,40]. [Pera, 70], [Banana,90]. [Siete,100] ] 
+      
+      Foreach del array 
+      if (random < array[1]) then 
+        ese item 
+      
+      */
+
+      
+      function Play_Game() {
+        const opcionesActuales = [];
+
+        let porcentajeManzana = Math.floor(Math.random() * 100) 
+
+        //console.log(opcionesPosibles);
+
+        for (let i = 0; i < opcionesPosibles.length; i++) {
+          const item = opcionesPosibles[i];
+          if(Math.floor(Math.random() * 100) < item.porc) {
+            opcionesActuales.push(item.nombre);
+            break;
+          }
+        }
+
+        for (let j = 0; j < opcionesPosibles.length; j++) {
+          const item = opcionesPosibles[j];
+          if(Math.floor(Math.random() * 100) < item.porc) {
+            opcionesActuales.push(item.nombre);
+            break;
+          }
+        }
+
+        for (let k = 0; k < opcionesPosibles.length; k++) {
+          const item = opcionesPosibles[k];
+          if(Math.floor(Math.random() * 100) < item.porc) {
+            opcionesActuales.push(item.nombre);
+            break;
+          }
+        }
+
+        let estadoJuego = false;
+
+        if(opcionesActuales[0] == '7' && opcionesActuales[1] == '7' && opcionesActuales[2] == '7') {
+          estadoJuego = Constantes.ESTADO_GANOGRANPREMIO
+        }
+        else if(
+          opcionesActuales[0] == opcionesActuales[1] &&
+          opcionesActuales[1] == opcionesActuales[2]
+        ) {
+          estadoJuego = Constantes.ESTADO_GANONORMAL
+        } else {
+          estadoJuego = Constantes.ESTADO_SEGUIPARTICIPANDO
+        }
+        
+        /*
+        switch(estadoJuego) {
+          case Constantes.ESTADO_GANONORMAL:
+            console.log('Ganaste 10 monedas');
+            break;
+          case Constantes.ESTADO_GANOGRANPREMIO:
+            console.log('F por el casino');
+            break;
+          case Constantes.ESTADO_SEGUIPARTICIPANDO:
+            console.log('F por ti');
+            break;
+        }
+        
+        console.log(opcionesActuales);
+        */
+        return {
+          estadoJuego,
+          opcionesActuales
+        }
+
+      }
+
+      let res = [];
+      for (let i = 0; i < 10000; i++) {
+        res.push(Play_Game());    
+      }
+
+      console.log(res);
+      const cantPerdidas = res.reduce((prev, act) => {
+        if(act.estadoJuego == -1) {
+          return prev + 1;
+        } else {
+          return prev
+        }
+      }, 0);
+      console.log('Cantidad de veces que pierde', cantPerdidas);
+
+      const cantGanancias = res.reduce((prev, act) => {
+        if(act.estadoJuego == 1) {
+          return prev + 1;
+        } else {
+          return prev
+        }
+      }, 0);
+      console.log('Cantidad de veces que gana', cantGanancias);
+
+      const cantSuperGanancias = res.reduce((prev, act) => {
+        if(act.estadoJuego == 2) {
+          return prev + 1;
+        } else {
+          return prev
+        }
+      }, 0);
+      console.log('Cantidad de veces que gana 777 ', cantSuperGanancias);
+
+      btnJugar.addEventListener('click', Play_Game);
+
+    })();
+
+  </script>
+
+</body>
+</html>
