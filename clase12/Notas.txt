@@ -1,5 +1,7 @@
+RENDERIZADO DE CONTENIDO
+
 Server-Side Rendering (Contenido renderizado del lado del servidor)
-- Express
+
 
 Client-Side Rendering (SPA)
 - Express (API)
@@ -7,7 +9,7 @@ Client-Side Rendering (SPA)
 Static Site Generation ()
 
 
-
+STACK WEB
 
 Bases de datos
 
@@ -16,3 +18,14 @@ Back-Ends
 - Express
 
 Front-End
+
+
+FORMULAS DE STACK WEB
+MERN: Mongo + Express + React.Js + Node.Js
+MEAN: Mongo + Express + Angular + Node.Js
+MEVN: Mongo + Express + Vue.Js + Node.Js
+
+
+COSAS A SEGUIR INVESTIGANDO
+
+Express: Seguridad, Rendimiento, Autenticación y Autorización, Consumo de APIs de terceros, Optimización y procesamientos paralelos, Microservicios, Infraestructura.

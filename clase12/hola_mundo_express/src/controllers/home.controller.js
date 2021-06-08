@@ -4,7 +4,10 @@ const controller = {};
 
 controller.index = async (req, res) => {
   console.log(homeModel.textos.log);
-  res.send(homeModel.textos.principal);
+  res.render('home', {
+    title: 'Hola mundo',
+    message: 'Hola hola!'
+  })
 }
 
 module.exports = controller;

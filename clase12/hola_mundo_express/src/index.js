@@ -5,6 +5,8 @@ const homeRoutes = require('./routes/home.routes');
 
 // 2. Crear la aplicación
 const app = express();
+app.set('view engine', 'pug');
+app.set('views', './src/views')
 
 
 // 3. Configurar los RequestHandler
