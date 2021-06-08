@@ -1,0 +1,18 @@
+Server-Side Rendering (Contenido renderizado del lado del servidor)
+- Express
+
+Client-Side Rendering (SPA)
+- Express (API)
+
+Static Site Generation ()
+
+
+
+
+Bases de datos
+
+
+Back-Ends
+- Express
+
+Front-End

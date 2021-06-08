@@ -1,0 +1,21 @@
+LO QUE ESCRIBO = LO QUE SE EJECUTA
+
+Python: print("Hola mundo") => print("Hola mundo")
+JS: alert("Hola mundo") => alert("Hola mundo")
+PHP: 
+
+
+LO QUE ESCRIBO =/= LO QUE SE EJECUTA
+
+C/C++:  printf("Hola mundo") => COMPILA 0101010001 => Ejecuta 0101010001
+Java:   System.out.println("Hola mundo") => COMPILADOR DE JAVA: ByteCode (JVM) => Ejecutando ByteCode
+.Net:
+Visual Fox:
+Visual Basic:
+Cobol:
+
+JS: 
+const texto: string = "Hola mundo"
+alert(texto)
+=> INTERPRETES / TRANSPILADORES (Webpack) 
+=> alert("Hola mundo")
